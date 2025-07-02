@@ -1,3 +1,3 @@
 # NotionX
 
-code uploading and deployment will be done on 1st July, 2025.
+code uploading and deployment will be done on 2nd July, 2025.
