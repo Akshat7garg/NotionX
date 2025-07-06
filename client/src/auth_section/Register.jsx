@@ -115,7 +115,7 @@ function Register() {
           {isLoading ? (
             <>
               <Loader2 className='animate-spin' />
-              Please wait
+              Please wait...
             </>
           ) : ('Create account')}
         </button>

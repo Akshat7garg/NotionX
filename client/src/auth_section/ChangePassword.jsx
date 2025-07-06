@@ -103,7 +103,7 @@ function ChangePassword() {
           {isLoading ? (
             <>
               <Loader2 className='animate-spin' />
-              Please wait
+              Please wait...
             </>
           ) : ('Update password')}
         </button>
