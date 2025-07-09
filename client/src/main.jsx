@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '@/store/index.js';
 
 // Toast notifications
-import { Toaster } from '@/landing_section/Sonner';
+import { Toaster } from '@/landing_section/sonner';
 
 // Render the root React component
 createRoot(document.getElementById('root')).render(
