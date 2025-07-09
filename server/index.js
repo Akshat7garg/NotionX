@@ -1,12 +1,25 @@
-import express from 'express';
+import dotenv from "dotenv";
+import connectDB from "./database/db.config.js";
+import { app } from "./app.js";
 
-const app = express();
-const port = 3000;
+// load env vars
+dotenv.config();
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const startServer = async () => {
+    try {
+        // connect to DB
+        await connectDB();
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+        // start server
+        const port = process.env.PORT || 8000;
+        app.listen(port, (req, res) => {
+            console.log(`⚙️  Server is successfully running at port: ${port}`);
+        });
+    }
+    catch (error) {
+        console.error("MongoDB connection and starting server failed!!!", error.message);
+        process.exit(1);
+    }
+}
+
+startServer();
