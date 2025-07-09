@@ -4,7 +4,7 @@ import cors from "cors"
 const app = express();
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'https://localhost:5173',
+    origin: "https://notionx-sage.vercel.app" || 'https://localhost:5173',
     credentials: true,
 }));
 

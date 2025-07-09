@@ -26,7 +26,6 @@ const createNote = asyncHandler(async (req, res) => {
 // Fetch notes
 const fetchNotes = asyncHandler(async (req, res) => {
     const { owner } = req.body;
-    console.log(owner)
 
     // Validate owner
     if (!owner || typeof owner !== "string" || owner.trim() === "") {
