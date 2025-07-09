@@ -27,7 +27,7 @@ function AddNote() {
     }
 
     try {
-      const { data } = await axios.post('/api/v1/notes/create', payLoad);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/notes/create`, payLoad);
 
       dispatch(addNote(data.data));
       toast.success('Note is successfully created!!!');

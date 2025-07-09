@@ -19,7 +19,7 @@ function NoteDialog({ title, content, _id }) {
     setIsLoading(true);
 
     try {
-      await axios.delete('/api/v1/notes/delete', { params: { _id } });
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/notes/delete`, { params: { _id } });
 
       dispatch(deleteNote({ _id }));
       toast.success('Note is successfully deleted!!!');
@@ -48,7 +48,7 @@ function NoteDialog({ title, content, _id }) {
     }
 
     try {
-      const { data } = await axios.put('/api/v1/notes/modify', payLoad);
+      const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/v1/notes/modify`, payLoad);
 
       dispatch(editNote(data.data));
       toast.success('Note is successfully modified!!!');

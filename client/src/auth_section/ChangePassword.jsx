@@ -35,7 +35,7 @@ function ChangePassword() {
     const payload = { email, newPassword };
 
     try {
-      const { data } = await axios.put('/api/v1/user/changePassword', payload);
+      const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/changePassword`, payload);
 
       toast.success(data.message);
       event.target.reset();

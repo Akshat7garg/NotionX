@@ -29,7 +29,7 @@ function App() {
       const delay = 3000; // 3 seconds between tries
 
       try {
-        await axios.get('/api/ping', { timeout: 10000 });
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/ping`, { timeout: 10000 });
         setIsReady(true);
       }
       catch (error) {

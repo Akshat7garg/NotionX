@@ -5,11 +5,6 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      '/api': 'https://notionx.onrender.com'
-    }
-  },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

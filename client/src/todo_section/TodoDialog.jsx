@@ -19,7 +19,7 @@ function TodoDialog({ isDone, content, _id }) {
     setIsDeleteLoading(true);
 
     try {
-      await axios.delete('/api/v1/todos/delete', { params: { _id } });
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/todos/delete`, { params: { _id } });
 
       dispatch(deleteTodo({ _id }));
       toast.success('Todo is successfully deleted!!!');
@@ -47,7 +47,7 @@ function TodoDialog({ isDone, content, _id }) {
     }
 
     try {
-      const { data } = await axios.put('/api/v1/todos/modify', payLoad);
+      const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/v1/todos/modify`, payLoad);
 
       dispatch(editTodo(data.data));
       toast.success('Todo is successfully modified!!!');
@@ -76,7 +76,7 @@ function TodoDialog({ isDone, content, _id }) {
     }
 
     try {
-      const { data } = await axios.put('/api/v1/todos/modify', payLoad);
+      const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/v1/todos/modify`, payLoad);
 
       dispatch(editTodo(data.data));
       toast.success('Todo is successfully modified!!!');

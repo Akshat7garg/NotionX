@@ -25,8 +25,8 @@ function UserMenu() {
 
       try {
         const [notesResponse, todosResponse] = await Promise.all([
-          axios.post('/api/v1/notes/fetch', { owner: userData?.email }),
-          axios.post('/api/v1/todos/fetch', { owner: userData?.email }),
+          axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/notes/fetch`, { owner: userData?.email }),
+          axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/todos/fetch`, { owner: userData?.email }),
         ])
 
         notesResponse.data.data.map((note) => dispatch(addNote(note)));

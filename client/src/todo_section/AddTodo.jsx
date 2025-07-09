@@ -25,7 +25,7 @@ function AddTodo() {
     }
 
     try {
-      const { data } = await axios.post('/api/v1/todos/create', payLoad);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/todos/create`, payLoad);
 
       dispatch(addTodo(data.data));
       toast.success('Todo is successfully created!!!');

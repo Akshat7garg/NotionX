@@ -37,7 +37,7 @@ function Register() {
     const payload = { name, email, password };
 
     try {
-      const { data } = await axios.post('/api/v1/user/register', payload);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/register`, payload);
 
       toast.success(data.message);
       localStorage.setItem('userDetails', JSON.stringify(data.data));

@@ -28,7 +28,7 @@ function LogIn() {
     };
 
     try {
-      const { data } = await axios.post('/api/v1/user/login', payload);
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/login`, payload);
 
       toast.success(data.message);
       localStorage.setItem('userDetails', JSON.stringify(data.data));
