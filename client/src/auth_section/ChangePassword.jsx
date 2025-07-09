@@ -97,7 +97,7 @@ function ChangePassword() {
         />
         <button
           type="submit"
-          className='w-full flex items-center justify-center gap-2  font-bold border-5 border-cream-6 bg-cream-5 text-mountain-2 text-lg cursor-pointer py-2 px-4 rounded-xl'
+          className='w-full flex items-center justify-center gap-2 font-bold border-5 border-cream-6 bg-cream-5 text-mountain-2 text-lg cursor-pointer py-2 px-4 rounded-xl'
           disabled={isLoading}
         >
           {isLoading ? (

@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '@/assets/logo.webp'
 import { useSelector } from 'react-redux'
+import logo from '@/assets/logo.webp'
 import UserMenu from '@/auth_section/UserMenu';
 import AuthOptions from '@/auth_section/AuthOptions';
 

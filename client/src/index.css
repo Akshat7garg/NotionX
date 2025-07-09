@@ -1,1 +1,32 @@
+/* Import Tailwind base styles */
 @import "tailwindcss";
+
+/* Custom Theme Variables */
+@theme {
+    --font-baloo: 'Baloo Thambi 2', sans-serif;
+
+    /* Color palette */
+    --color-mountain-1: #713302;
+    --color-mountain-2: #4B2C1C;
+    --color-cream-1: #FFF5DB;
+    --color-cream-2: #FFD38B;
+    --color-cream-3: #FFC85E;
+    --color-cream-4: #F2B343;
+    --color-cream-5: #FFAA38;
+    --color-cream-6: #E47611;
+
+    /* Custom pulse animations with delay */
+    --animate-pulse-delay-1: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.3s;
+    --animate-pulse-delay-2: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.6s;
+}
+
+/* Custom Scrollbar Styling */
+.scrollbar-none::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+.scrollbar-none::-webkit-scrollbar-thumb {
+    background-color: #4B2C1C;
+    border-radius: 6px;
+}
