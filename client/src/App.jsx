@@ -25,25 +25,31 @@ function App() {
 
     // ping backend with retry
     const pingBackend = async (retryCount = 0) => {
-      const maxRetries = 3;
-      const delay = 3000; // 3 seconds between tries
+      const maxRetries = 10;
+      const delay = 5000; // 5 seconds
 
       try {
+        // Try to ping the backend
         await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/ping`, { timeout: 10000 });
         setIsReady(true);
       }
       catch (error) {
-        console.warn(`Ping failed (try ${retryCount + 1})`);
+        if (retryCount === 0) {
+          // Trigger deploy hook only once (on first failure)
+          await axios.post(import.meta.env.VITE_BACKEND_DEPLOY_HOOK);
+        }
 
         if (retryCount <= maxRetries) {
+          console.warn(`Retrying ping (${retryCount + 1}/${maxRetries})...`);
           setTimeout(() => pingBackend(retryCount + 1), delay);
         }
         else {
-          console.error('Backend wake-up failed after multiple attempts');
-          toast.error('Something went wrong, please try again.');
+          console.error('Backend not reachable after retries.');
+          toast.error('Something went wrong, please refresh the page and try again.');
+          setIsReady(false); // Or show an error message
         }
       }
-    }
+    };
 
     pingBackend();
   }, [])

@@ -10,6 +10,7 @@ function NoAuth() {
         src={noAuth}
         alt="No_Login"
         className='h-32 sm:h-40'
+        loading='lazy'
       />
 
       {/* Title */}

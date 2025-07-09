@@ -17,6 +17,7 @@ function Header() {
                     src={logo}
                     alt="NotionX_Logo"
                     className='h-12'
+                    loading='lazy'
                 />
                 <span className='text-2xl md:text-3xl text-mountain-2 font-black'>NotionX</span>
             </div>

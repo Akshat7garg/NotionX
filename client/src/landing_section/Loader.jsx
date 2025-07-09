@@ -9,6 +9,7 @@ function Loader() {
         src={logo}
         alt="NotionX_Logo"
         className='h-32 md:h-36 lg:h-40 mb-2'
+        loading='lazy'
       />
 
       {/* animated dots */}

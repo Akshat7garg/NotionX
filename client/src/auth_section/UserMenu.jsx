@@ -82,6 +82,7 @@ function UserMenu() {
           src={profile}
           alt={userData?.name || 'Guest'}
           className='h-8'
+          loading='lazy'
         />
       </button>
 

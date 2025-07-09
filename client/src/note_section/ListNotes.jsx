@@ -38,6 +38,7 @@ function NoNotes() {
           src={notFound}
           alt="No_Login"
           className='h-32 sm:h-40'
+          loading='lazy'
         />
         <h3 className='text-xl sm:text-2xl font-black text-mountain-2'>
           No notes yet!
