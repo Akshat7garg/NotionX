@@ -5,6 +5,7 @@ const app = express();
 
 app.use(cors({
     origin: "https://notionx-sage.vercel.app" || 'https://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
 
