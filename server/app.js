@@ -4,7 +4,7 @@ import cors from "cors"
 const app = express();
 
 app.use(cors({
-    origin: "https://notionx-sage.vercel.app" || 'http://localhost:5173',
+    origin: ["https://notionx-sage.vercel.app", "http://localhost:5173"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
