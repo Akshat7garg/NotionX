@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import axios from 'axios';
 import { useSelector } from 'react-redux'
 import logo from '@/assets/logo.webp'
 import UserMenu from '@/auth_section/UserMenu';
