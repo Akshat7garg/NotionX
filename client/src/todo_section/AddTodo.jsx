@@ -58,7 +58,7 @@ function AddTodo() {
       {/* Modal Dialog for adding a new todo */}
       {isOpenDialog && (
         <div className='fixed z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[303px] sm:w-[456px] p-3 md:p-6 border-6 border-mountain-2 rounded-2xl bg-cream-3'>
-          <h1 className='w-full text-center text-3xl font-black text-mountain-2'>Add Note</h1>
+          <h1 className='w-full text-center text-3xl font-black text-mountain-2'>Add Todo</h1>
 
           <form
             className='w-full flex flex-col gap-4 items-center pt-4'

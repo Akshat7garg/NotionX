@@ -6,7 +6,6 @@ import Loader from './landing_section/Loader'
 import Header from './landing_section/Header'
 import Hero from './landing_section/Hero'
 import SwitcherPanel from './landing_section/SwitcherPanel'
-import { toast } from 'sonner'
 
 function App() {
   const dispatch = useDispatch();
@@ -23,35 +22,49 @@ function App() {
       dispatch(logoutUser());
     }
 
-    // ping backend with retry
-    const pingBackend = async (retryCount = 0) => {
-      const maxRetries = 10;
-      const delay = 5000; // 5 seconds
+    const BACKEND_PING_URL = `${import.meta.env.VITE_BACKEND_URL}/api/pign`;
+    const RENDER_DEPLOY_HOOK_URL = import.meta.env.VITE_BACKEND_DEPLOY_HOOK;
 
+    // trigger Render deploy
+    const silentlyTriggerDeploy = () => {
+      fetch(RENDER_DEPLOY_HOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+      });
+    };
+
+    const checkBackend = async () => {
       try {
-        // Try to ping the backend
-        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/ping`, { timeout: 10000 });
-        setIsReady(true);
-      }
-      catch (error) {
-        if (retryCount === 0) {
-          // Trigger deploy hook only once (on first failure)
-          await axios.post(import.meta.env.VITE_BACKEND_DEPLOY_HOOK);
-        }
+        console.log('Pinging backend...');
+        await axios.get(BACKEND_PING_URL, { timeout: 10000 });
 
-        if (retryCount <= maxRetries) {
-          console.warn(`Retrying ping (${retryCount + 1}/${maxRetries})...`);
-          setTimeout(() => pingBackend(retryCount + 1), delay);
-        }
-        else {
-          console.error('Backend not reachable after retries.');
-          toast.error('Something went wrong, please refresh the page and try again.');
-          setIsReady(false); // Or show an error message
-        }
+        console.log('Backend is up now...');
+        setIsReady(true);
+      } 
+      catch (pingErr) {
+        console.warn('Backend not responding within 10 sec:', pingErr.message);
+        console.log('Triggering backend wake-up silently...');
+
+        silentlyTriggerDeploy();
+        console.log('Waiting 90 seconds before retrying ping...');
+        
+        setTimeout(async () => {
+          try {
+            console.log('Retrying backend ping...');
+            await axios.get(BACKEND_PING_URL, { timeout: 10000 });
+
+            console.log('Backend is now up...');
+            setIsReady(true);
+          } 
+          catch (finalErr) {
+            console.error('Backend still down after retry. Reloading page...');
+            window.location.reload();
+          }
+        }, 90000); // 90s wait
       }
     };
 
-    pingBackend();
+    checkBackend();
   }, [])
 
   return (
