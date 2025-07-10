@@ -22,7 +22,7 @@ function App() {
       dispatch(logoutUser());
     }
 
-    const BACKEND_PING_URL = `${import.meta.env.VITE_BACKEND_URL}/api/pign`;
+    const BACKEND_PING_URL = `${import.meta.env.VITE_BACKEND_URL}/api/ping`;
     const RENDER_DEPLOY_HOOK_URL = import.meta.env.VITE_BACKEND_DEPLOY_HOOK;
 
     // trigger Render deploy

@@ -20,7 +20,7 @@ function Loader() {
       </div>
 
       {/* message */}
-      <p className='w-full text-center text-2xl md:text-3xl lg:text-4xl font-black text-mountain-2'>Hang tight! We're powering things up for you. It usually takes about 1-2 minutes!!!</p>
+      <p className='w-full text-center text-xl font-black text-mountain-2'>Hang tight! We're powering things up for you. It usually takes about 1-2 minutes!!!</p>
     </div>
   )
 }
